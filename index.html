@@ -1,0 +1,43 @@
+<html ng-app="supercoolApp">
+<head>
+
+</head>
+<body ng-controller="HomePageController">
+	Search: <input ng-model="query.name">
+	Sort by:
+	<select ng-model="sortOrder">
+		<option value=""></option>
+		<option value="weight">Weight</option>
+	</select>
+	
+	
+	<div ng-repeat="animal in animals | filter:query | orderBy:sortOrder">
+		Hi I am a {{ animal.name }}. I weigh {{ animal.weight }} kilograms.
+	</div>
+
+	<div ng-view>	
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.5/angular.min.js"></script>
+</body
+</html>
+
+
+<script>
+var supercoolApp = angular.module('supercoolApp', []);
+
+supercoolApp.controller('HomePageController', function($scope) {
+	$scope.animals = [
+		{'name': 'Giraffe',
+		 'weight': 500},
+		{'name': 'Tiger',
+		 'weight': 300}
+	];
+});
+
+
+</script>
+
+
+
+
+
